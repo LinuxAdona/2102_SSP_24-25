@@ -1,10 +1,12 @@
 from classes.Task import *
 
-task1 = Task("Activity 1", "ACP", '2024-11-20', 1)
+task1 = Task("Activity 1", "ACP", 'Hays', '2024-11-20', 1)
 
-if task1.check_date(date.today()) == 0:
-    print("today")
-elif task1.check_date(date.today()) == -1:
-    print("missed")
+if task1.is_due_today(date.today()):
+    print("Due Today:", task1)
+elif task1.is_upcoming(date.today()):
+    print("Upcoming:", task1.days_remaining(date.today()), "Days", task1.__str__())
+elif task1.is_overdue(date.today()):
+    print("Overdue:", task1.days_passed(date.today()), "Days", task1.__str__())
 else:
-    print("Days Remaining:", task1.check_date(date.today()))
+    print("Not Due:", task1)

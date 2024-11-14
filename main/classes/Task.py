@@ -15,6 +15,10 @@ class Task:
         else:
             status = "Completed"
         return status
+
+    def mark_completed(self):
+        self.status = True
+
     def is_due_today(self, current_date):
         return self.due_date == current_date
 
@@ -33,3 +37,10 @@ class Task:
         if self.due_date < current_date:
             days = current_date - self.due_date
             return days.days
+
+    def __str__(self):
+        if not self.status:
+            status = "Pending"
+        else:
+            status = "Completed"
+        return f"[{status}] \nTitle: {self.title}\nSubject: {self.subject}\nDescription: {self.description}\nDue Date: {self.due_date}\nPriority: {self.priority}"
