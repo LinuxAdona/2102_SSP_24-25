@@ -39,8 +39,5 @@ class Task:
             return days.days
 
     def __str__(self):
-        if not self.status:
-            status = "Pending"
-        else:
-            status = "Completed"
+        status = self.check_status()
         return f"[{status}] \nTitle: {self.title}\nSubject: {self.subject}\nDescription: {self.description}\nDue Date: {self.due_date}\nPriority: {self.priority}"
